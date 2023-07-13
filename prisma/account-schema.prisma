@@ -7,7 +7,7 @@ datasource db {
   url      = env("ACCOUNT_DATABASE_URL")
 }
 
-model User {
+model Account {
   id        String   @id @default(uuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

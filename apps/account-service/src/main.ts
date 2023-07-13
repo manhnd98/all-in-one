@@ -3,7 +3,7 @@
  * This is only a minimal backend to get started.
  */
 
-import {Logger} from '@nestjs/common';
+import {Logger, ValidationPipe} from '@nestjs/common';
 import {NestFactory} from '@nestjs/core';
 
 import {AppModule} from './app/app.module';
@@ -17,6 +17,10 @@ async function bootstrap() {
     logger: ['error', 'warn', 'debug', 'log', 'verbose']
   });
 
+  // pipe
+  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true }));
+
+  // config swagger
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Account service')
     .setDescription('The account service API description')
@@ -27,6 +31,7 @@ async function bootstrap() {
   const swaggerDocument = SwaggerModule.createDocument(app, swaggerConfig);
   SwaggerModule.setup('api', app, swaggerDocument);
 
+  // config rabbitmq & microservice
   const accountConfigService = app.get<RabbitmqConfig>(rabbitmqConfig.KEY);
 
   app.connectMicroservice<MicroserviceOptions>( {
@@ -39,6 +44,10 @@ async function bootstrap() {
       },
     }
   });
+
+  // bootstrapping
+  app.enableShutdownHooks();
+
   await app.startAllMicroservices();
   Logger.log('Account service is running');
 

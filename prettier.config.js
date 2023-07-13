@@ -1,0 +1,19 @@
+const base = require("@tinkoff/typescript-config");
+
+module.exports = {
+  ...base,
+  overrides: [
+    {
+      files: ["*.js", "*.ts"],
+      options: { printWidth: 90, parser: "typescript" },
+    },
+    {
+      files: "*.html",
+      options: { printWidth: 80, parser: "html" },
+    },
+    {
+      files: ["package.json", "ng-package.json"],
+      options: { parser: "json-stringify" },
+    },
+  ],
+};

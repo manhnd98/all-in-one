@@ -18,14 +18,19 @@
     "paths": {
       "@all-in-one/account/commands": ["libs/account/commands/src/index.ts"],
       "@all-in-one/account/database": ["libs/account/database/src/index.ts"],
+      "@all-in-one/account/domain": ["libs/account/domain/src/index.ts"],
       "@all-in-one/account/utils/config": [
         "libs/account/utils/config/src/index.ts"
       ],
-      "@all-in-one/api/utils": ["libs/api/utils/src/index.ts"],
+      "@all-in-one/account/utils/tokens": [
+        "libs/account/utils/tokens/src/index.ts"
+      ],
+      "@all-in-one/core/api": ["libs/core/api/src/index.ts"],
+      "@all-in-one/core/application": ["libs/core/application/src/index.ts"],
       "@all-in-one/core/ddd": ["libs/core/ddd/src/index.ts"],
       "@all-in-one/core/exceptions": ["libs/core/exceptions/src/index.ts"],
       "@all-in-one/core/guard": ["libs/core/guard/src/index.ts"],
-      "@all-in-one/utils": ["libs/utils/src/index.ts"]
+      "@all-in-one/core/port": ["libs/core/port/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
